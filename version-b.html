@@ -209,7 +209,6 @@
         background: var(--ink);
       }
 
-
       /* red vignette from sides */
       .hero-veil {
         position: absolute;
@@ -1142,7 +1141,6 @@
           gap: 3px;
         }
 
-
         .gallery-hd,
         .ig-head.w {
           padding-left: 22px;
@@ -1216,7 +1214,13 @@
 
     <!-- HERO -->
     <section id="hero">
-      <div style="position:absolute;inset:0;background:url('hero-painting.jpg') center/cover no-repeat;filter:brightness(0.65) saturate(0.85);"></div>
+      <div
+        style="
+          position: absolute;
+          inset: 0;
+          background: url(&quot;hero-painting.jpg&quot;) center/cover no-repeat;
+          filter: brightness(0.65) saturate(0.85);
+        "></div>
       <div class="hero-veil"></div>
       <div class="hero-aside">
         <p>Café · Bar · Events</p>
@@ -1894,7 +1898,7 @@
           <div class="about-img-wrap rv">
             <img
               class="about-img-main"
-              src="photo-02.jpg" 
+              src="photo-02.jpg"
               alt="Inside Special Mention bar" />
             <div class="about-img-badge">
               <span class="badge-line1">Arataki</span>
@@ -2085,7 +2089,7 @@
             <div
               style="grid-column: span 2; overflow: hidden; aspect-ratio: 16/9">
               <img
-                src="photo-05.jpg" 
+                src="photo-05.jpg"
                 alt="Food at Special Mention"
                 style="
                   width: 100%;
@@ -2096,7 +2100,7 @@
             </div>
             <div style="overflow: hidden; aspect-ratio: 1">
               <img
-                src="photo-04.jpg" 
+                src="photo-04.jpg"
                 alt="Brunch plate"
                 style="
                   width: 100%;
@@ -2107,7 +2111,7 @@
             </div>
             <div style="overflow: hidden; aspect-ratio: 1">
               <img
-                src="photo-03.jpg" 
+                src="photo-03.jpg"
                 alt="Coffee"
                 style="
                   width: 100%;
@@ -2134,9 +2138,7 @@
       </div>
       <div class="events-row">
         <div class="ev-card rv">
-          <img
-            src="photo-01.jpg" 
-            alt="Wine & Jazz nights" />
+          <img src="photo-06.jpg" alt="Wine & Jazz nights" />
           <div class="ev-shade"></div>
           <div class="ev-body">
             <p class="ev-tag">★ Next Up</p>
@@ -2148,9 +2150,7 @@
           </div>
         </div>
         <div class="ev-card rv d1">
-          <img
-            src="photo-01.jpg" 
-            alt="Pournic party" />
+          <img src="photo-01.jpg" alt="Pournic party" />
           <div class="ev-shade"></div>
           <div class="ev-body">
             <p class="ev-tag">★ Events</p>
@@ -2161,9 +2161,7 @@
           </div>
         </div>
         <div class="ev-card rv d2">
-          <img
-            src="photo-01.jpg"
-            alt="Local collabs" />
+          <img src="photo-09.jpg" alt="Local collabs" />
           <div class="ev-shade"></div>
           <div class="ev-body">
             <p class="ev-tag">★ Collabs</p>
@@ -2198,29 +2196,48 @@
       </div>
     </div>
 
-
-
-
     <!-- VIDEO -->
-    <section id="video" style="background:var(--ink);padding:80px 0 0;">
-      <div class="w" style="margin-bottom:32px;">
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <section id="video" style="background: var(--ink); padding: 80px 0 0">
+      <div class="w" style="margin-bottom: 32px">
+        <div
+          style="
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+          ">
           <div>
             <span class="about-kicker rv">The vibe</span>
-            <h2 class="block-h rv d1">See it for <span class="red">yourself</span></h2>
+            <h2 class="block-h rv d1">
+              See it for <span class="red">yourself</span>
+            </h2>
           </div>
-          <a href="https://www.instagram.com/specialmention_atk/" target="_blank" rel="noopener" class="btn btn-red rv d1">Follow on Instagram</a>
+          <a
+            href="https://www.instagram.com/specialmention_atk/"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-red rv d1"
+            >Follow on Instagram</a
+          >
         </div>
       </div>
-      <div class="rv" style="width:100%;background:#000;overflow:hidden;line-height:0;">
+      <div
+        class="rv"
+        style="width: 100%; background: #000; overflow: hidden; line-height: 0">
         <video
           src="sm-highlight.mp4"
           autoplay
           muted
           loop
           playsinline
-          style="width:100%;display:block;max-height:85vh;object-fit:cover;filter:grayscale(100%);"
-        ></video>
+          style="
+            width: 100%;
+            display: block;
+            max-height: 85vh;
+            object-fit: cover;
+            filter: grayscale(100%);
+          "></video>
       </div>
     </section>
 
@@ -2400,8 +2417,7 @@
             <ul>
               <li><a href="#about">About</a></li>
               <li><a href="#events">Events</a></li>
-              <li>
-</li>
+              <li></li>
               <li><a href="#testimonials">Community</a></li>
             </ul>
           </div>
@@ -2467,7 +2483,6 @@
         },
         { passive: true },
       );
-
 
       const burger = document.getElementById("burger");
       const mob = document.getElementById("mob");
