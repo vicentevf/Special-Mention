@@ -1042,7 +1042,7 @@
         color: var(--cream);
       }
 
-      /* ── RESPONSIVE ──────────────────────────── */
+      /* RESPONSIVE */
       @media (max-width: 1024px) {
         .w {
           padding: 0 36px;
@@ -1068,7 +1068,7 @@
           padding: 13px 22px;
         }
         section {
-          padding: 72px 0;
+          padding: 64px 0;
         }
 
         .nav-links {
@@ -1085,21 +1085,37 @@
           display: none;
         }
 
+        /* About */
         .about-grid {
           grid-template-columns: 1fr;
         }
         .about-img-badge {
           width: 88px;
           height: 88px;
-          right: -12px;
+          right: -8px;
+          bottom: -14px;
         }
+
+        /* Food */
         #food .w > div {
           grid-template-columns: 1fr !important;
+          gap: 40px !important;
+        }
+
+        /* Featured Event - fix inline padding and collapse 2-col grid */
+        #next-up > div:nth-child(2) {
+          padding: 48px 22px !important;
+        }
+        #next-up [style*="grid-template-columns: 1fr 1fr"] {
+          grid-template-columns: 1fr !important;
+          gap: 32px !important;
         }
         #next-up [style*="grid-template-columns:1fr 1fr"] {
           grid-template-columns: 1fr !important;
+          gap: 32px !important;
         }
 
+        /* Events */
         .events-head {
           flex-direction: column;
           align-items: flex-start;
@@ -1114,6 +1130,7 @@
           aspect-ratio: 4/3;
         }
 
+        /* Gallery */
         .g-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -1127,6 +1144,7 @@
           aspect-ratio: 1;
         }
 
+        /* Instagram */
         .ig-grid {
           grid-template-columns: repeat(3, 1fr);
         }
@@ -1136,8 +1154,9 @@
           gap: 4px;
         }
 
+        /* Testimonials */
         .t-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr !important;
           gap: 3px;
         }
 
@@ -1147,6 +1166,7 @@
           padding-right: 22px;
         }
 
+        /* Footer */
         .f-grid {
           grid-template-columns: 1fr;
           gap: 28px;
@@ -1156,6 +1176,26 @@
           gap: 8px;
           text-align: center;
         }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 480px) {
+        .hero-h1 {
+          font-size: clamp(3rem, 13vw, 5rem);
+        }
+        .about-h2 {
+          font-size: clamp(2.2rem, 8vw, 3rem);
+        }
+        .block-h {
+          font-size: clamp(2rem, 8vw, 3rem);
+        }
+        #next-up > div:nth-child(2) {
+          padding: 36px 18px !important;
+        }
+        #mob a {
+          font-size: 2.6rem;
+        }
+      }
       }
     </style>
   </head>
