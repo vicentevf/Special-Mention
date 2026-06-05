@@ -111,14 +111,17 @@
       }
 
       .nav-logo {
-        font-family: var(--bebas);
-        font-size: 1.2rem;
-        letter-spacing: 0.1em;
-        color: rgba(255, 215, 0, 1);
+        display: flex;
+        align-items: center;
         text-decoration: none;
       }
-      .nav-logo .ast {
-        color: var(--red);
+      .nav-logo img {
+        height: 30px;
+        width: auto;
+        display: block;
+      }
+      @media (max-width: 768px) {
+        .nav-logo img { height: 24px; }
       }
 
       .nav-links {
@@ -1217,7 +1220,7 @@
 
     <!-- Nav -->
     <nav id="nav">
-      <a href="#" class="nav-logo"><span class="ast">*</span>special mention</a>
+      <a href="#" class="nav-logo"><img src="logo-header.png" alt="*special mention" /></a>
       <ul class="nav-links">
         <li>
           <a
