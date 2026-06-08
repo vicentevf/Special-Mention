@@ -67,22 +67,116 @@
         height: 100%;
         position: relative;
         overflow: hidden;
-        border-left: 1px solid rgba(242, 237, 227, 0.06);
+        border-left: 4px solid var(--yellow);
+        background: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      .right-panel img {
+
+      /* ── BRAND PANEL ── */
+      .brand-panel {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 44px;
+        position: relative;
+        text-align: center;
       }
-      .right-panel::after {
-        content: "";
+      .brand-panel-star {
         position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(to right, rgba(23, 18, 16, 0.35) 0%, transparent 40%),
-          linear-gradient(to top, rgba(23, 18, 16, 0.5) 0%, transparent 30%);
+        font-family: var(--bebas);
+        font-size: 52vw;
+        color: var(--red);
+        opacity: 0.03;
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .brand-top-line {
+        width: 48px;
+        height: 3px;
+        background: var(--yellow);
+        margin: 0 auto 36px;
+      }
+      .brand-logo-img {
+        height: 80px;
+        width: auto;
+        display: block;
+        margin: 0 auto 36px;
+      }
+      .brand-label {
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 36px;
+      }
+      .brand-desc {
+        font-family: var(--bebas);
+        font-size: 1.25rem;
+        letter-spacing: 0.1em;
+        color: var(--yellow);
+        line-height: 1.55;
+        margin-bottom: 12px;
+      }
+      .brand-location {
+        font-size: 0.65rem;
+        font-weight: 300;
+        color: #fff;
+        letter-spacing: 0.1em;
+        margin-bottom: 6px;
+      }
+      .brand-social {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: var(--yellow);
+        margin-bottom: 48px;
+      }
+      .brand-divider {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, var(--yellow), rgba(232, 192, 48, 0.1));
+        margin-bottom: 36px;
+      }
+      .brand-stats {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        gap: 4px;
+      }
+      .brand-stat-num {
+        font-family: var(--bebas);
+        font-size: 2rem;
+        color: var(--yellow);
+        line-height: 1;
+      }
+      .brand-stat-label {
+        font-size: 0.52rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #fff;
+        margin-top: 5px;
+      }
+      .brand-bottom-tag {
+        position: absolute;
+        bottom: 32px;
+        left: 0; right: 0;
+        text-align: center;
+        font-size: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
       }
 
       .deck {
@@ -632,7 +726,7 @@
           </h2>
           <div class="rule"></div>
           <div class="two-col">
-            <ul class="checklist" style="color: var(--ink)">
+            <ul class="checklist">
               <li>
                 Instagram exists, but doesn't convert visitors into customers
               </li>
@@ -651,16 +745,16 @@
             </ul>
             <div
               style="
-                background: var(--cream);
-                padding: 32px;
+                background: rgba(242, 237, 227, 0.06);
                 border-left: 4px solid var(--red);
+                padding: 32px;
               ">
-              <div class="quote-mark" style="color: var(--red)">"</div>
-              <p class="big-quote" style="font-size: 1.1rem; max-width: 100%">
+              <div class="quote-mark" style="color: var(--red); opacity: 0.4">"</div>
+              <p class="big-quote" style="font-size: 1.05rem; max-width: 100%; color: var(--cream)">
                 "A very quaint but vibrant place. Highly recommended for both
                 locals and visitors."
               </p>
-              <span class="quote-attr"
+              <span class="quote-attr" style="color: rgba(242, 237, 227, 0.45)"
                 >Kookie Samin · Google Reviews · 254 reviews</span
               >
             </div>
@@ -743,7 +837,7 @@
           </h2>
           <div class="rule"></div>
           <div class="two-col">
-            <ul class="checklist" style="color: var(--ink)">
+            <ul class="checklist">
               <li>
                 Colour palette taken directly from the brand's Instagram feed
               </li>
@@ -939,7 +1033,7 @@
           </h2>
           <div class="rule"></div>
           <div class="two-col">
-            <ul class="checklist" style="color: var(--ink)">
+            <ul class="checklist">
               <li>
                 Pure HTML + CSS + JavaScript — no heavy frameworks
               </li>
@@ -1002,7 +1096,7 @@
         </div>
 
         <!-- 07 REVIEWS -->
-        <div class="slide slide-red slide-center" id="s6">
+        <div class="slide slide-dark slide-center" id="s6">
       <div class="photo-bg" style="background-image: url('fotos/7.jpg')"></div>
           <span class="slide-num" style="color: rgba(255, 255, 255, 0.2)"
             >07 / 10</span
@@ -1172,7 +1266,7 @@
           <div class="rule"></div>
           <p
             class="subtitle"
-            style="color: rgba(23, 18, 16, 0.55); margin-bottom: 8px">
+            style="color: rgba(242, 237, 227, 0.6); margin-bottom: 8px">
             Two options. Both include the full site, both versions, real content
             and a live URL.
           </p>
@@ -1195,7 +1289,7 @@
                 <li><span>Deployed live on GitHub Pages</span></li>
                 <li><span>Files handed over — you own everything</span></li>
                 <li>
-                  <span style="color: rgba(23, 18, 16, 0.35)"
+                  <span style="color: rgba(242, 237, 227, 0.35)"
                     >No maintenance from my side after delivery</span
                   >
                 </li>
@@ -1366,7 +1460,33 @@
     <!-- /left-panel -->
 
     <div class="right-panel">
-      <img src="hero-painting.jpg" alt="*special mention" />
+      <div class="brand-panel">
+        <div class="brand-panel-star">*</div>
+        <div class="brand-top-line"></div>
+        <img src="logo-header-stg.png" alt="*special mention" class="brand-logo-img" />
+        <div class="brand-label">Landing Page Proposal · 2026</div>
+        <div class="brand-desc">
+          Café, bar &amp;<br />community venue
+        </div>
+        <div class="brand-location">399 Oceanbeach Rd · Arataki · Mount Maunganui</div>
+        <div class="brand-social">@specialmention_atk</div>
+        <div class="brand-divider"></div>
+        <div class="brand-stats">
+          <div>
+            <div class="brand-stat-num">5.0★</div>
+            <div class="brand-stat-label">Google</div>
+          </div>
+          <div>
+            <div class="brand-stat-num">2</div>
+            <div class="brand-stat-label">Versions</div>
+          </div>
+          <div>
+            <div class="brand-stat-num">100%</div>
+            <div class="brand-stat-label">Responsive</div>
+          </div>
+        </div>
+        <div class="brand-bottom-tag">Website Proposal · Vicente Fernandes · 2026</div>
+      </div>
     </div>
 
     <script>
