@@ -73,6 +73,15 @@
         align-items: center;
         justify-content: center;
       }
+      .right-panel::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 120px;
+        background: linear-gradient(to right, #171210, transparent);
+        z-index: 5;
+        pointer-events: none;
+      }
 
       /* ── BRAND PANEL ── */
       .brand-panel {
