@@ -1,0 +1,1410 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>*special mention — Website Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400&display=swap"
+      rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --red: #cc2a28;
+        --yellow: #e8c030;
+        --ink: #171210;
+        --cream: #f2ede3;
+        --warm: #e8e0d0;
+        --mid: #7a6e60;
+        --bebas: "Bebas Neue", Impact, sans-serif;
+        --body: "Space Grotesk", system-ui, sans-serif;
+        --serif: "Playfair Display", Georgia, serif;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        font-family: var(--body);
+        background: var(--ink);
+        color: var(--cream);
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ── SPLIT LAYOUT ── */
+      .left-panel {
+        width: 60%;
+        height: 100%;
+        position: relative;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+      .right-panel {
+        flex: 1;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border-left: 1px solid rgba(242, 237, 227, 0.06);
+      }
+      .right-panel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+      .right-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to right, rgba(23, 18, 16, 0.35) 0%, transparent 40%),
+          linear-gradient(to top, rgba(23, 18, 16, 0.5) 0%, transparent 30%);
+      }
+
+      .deck {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 60px 68px;
+
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+        transform: translateY(24px);
+      }
+      .slide.active {
+        opacity: 1;
+        pointer-events: all;
+        transform: none;
+      }
+      .slide.out {
+        opacity: 0;
+        transform: translateY(-24px);
+      }
+            /* Photo background layer — grayscale */
+      .photo-bg {
+        position: absolute; inset: 0;
+        background-size: cover; background-position: center;
+        filter: grayscale(100%) brightness(0.45);
+        z-index: 0;
+      }
+/* Colour tint overlay */
+      .slide::before {
+        content: "";
+        position: absolute; inset: 0;
+        background: rgba(14, 10, 8, 0.55);
+        z-index: 1;
+      }
+      .slide-red::before { background: rgba(160, 28, 26, 0.82); }
+      .slide > *:not(.photo-bg) { position: relative; z-index: 2; }
+      .slide-num { z-index: 3 !important; }
+
+
+      .slide-cover { }
+      .slide-light { color: var(--cream); }
+      .slide-warm { color: var(--cream); }
+      .slide-red { color: var(--cream); }
+      .slide-dark { }
+      .slide-center {
+        align-items: center;
+        text-align: center;
+      }
+
+      .kicker {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .kicker::before {
+        content: "";
+        width: 32px;
+        height: 2px;
+        background: var(--red);
+      }
+      .slide-red .kicker {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .slide-red .kicker::before {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .title {
+        font-family: var(--bebas);
+        font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+        line-height: 0.92;
+        letter-spacing: 0.02em;
+        margin-bottom: 24px;
+      }
+      .title .red {
+        color: var(--red);
+      }
+      .title .yel {
+        color: var(--yellow);
+      }
+      .title .it {
+        font-family: var(--serif);
+        font-size: 0.8em;
+      }
+
+
+      .subtitle {
+        font-size: 1.05rem;
+        font-weight: 300;
+        line-height: 1.8;
+        color: rgba(242, 237, 227, 0.55);
+        max-width: 560px;
+        margin-bottom: 36px;
+      }
+
+      .slide-red .subtitle {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .rule {
+        width: 56px;
+        height: 3px;
+        background: var(--red);
+        margin: 20px 0 28px;
+      }
+      .slide-red .rule {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .logo-img {
+        height: 38px;
+        width: auto;
+        display: block;
+        margin-bottom: 48px;
+      }
+
+      .feat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .feat-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .feat-grid .feat {
+        padding: 18px 16px;
+      }
+      .feat-grid-2 .feat {
+        padding: 22px 20px;
+      }
+
+      .feat {
+        background: rgba(242, 237, 227, 0.05);
+        border-left: 3px solid var(--red);
+        padding: 24px 22px;
+      }
+
+      .feat-icon {
+        font-family: var(--bebas);
+        font-size: 1.8rem;
+        color: var(--yellow);
+        margin-bottom: 8px;
+        display: block;
+      }
+      .feat-title {
+        font-family: var(--bebas);
+        font-size: 1.1rem;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+        color: var(--cream);
+      }
+
+      .feat-desc {
+        font-size: 0.8rem;
+        font-weight: 300;
+        line-height: 1.65;
+        color: rgba(242, 237, 227, 0.5);
+      }
+
+
+      .checklist {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .checklist li {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        font-size: 0.95rem;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      .checklist li::before {
+        content: "✓";
+        font-family: var(--bebas);
+        font-size: 1rem;
+        color: var(--yellow);
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      /* PRICE */
+      .price-row {
+        display: flex;
+        gap: 3px;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .price-box {
+        flex: 1;
+        padding: 32px 28px;
+        background: rgba(242, 237, 227, 0.04);
+        border-top: 3px solid transparent;
+        position: relative;
+      }
+      .price-box.opt-a {
+        border-top-color: var(--yellow);
+      }
+      .price-box.opt-b {
+        border-top-color: var(--red);
+        background: var(--red);
+      }
+      .price-label {
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: rgba(242, 237, 227, 0.4);
+        margin-bottom: 10px;
+      }
+      .price-box.opt-b .price-label {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .price-amount {
+        font-family: var(--bebas);
+        font-size: 3.8rem;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        color: var(--cream);
+      }
+      .price-box.opt-b .price-amount {
+        color: #fff;
+      }
+      .price-per {
+        font-family: var(--bebas);
+        font-size: 1.2rem;
+        color: rgba(242, 237, 227, 0.4);
+        margin-left: 4px;
+      }
+      .price-box.opt-b .price-per {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .price-note {
+        font-size: 0.78rem;
+        font-weight: 300;
+        color: rgba(242, 237, 227, 0.4);
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+      .price-box.opt-b .price-note {
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .price-tag {
+        display: inline-block;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        margin-bottom: 12px;
+      }
+      .opt-a .price-tag {
+        background: var(--yellow);
+        color: var(--ink);
+      }
+      .opt-b .price-tag {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+      }
+      .price-includes {
+        list-style: none;
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .price-includes li {
+        font-size: 0.75rem;
+        font-weight: 300;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .price-includes li::before {
+        content: "✓";
+        color: var(--yellow);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .opt-b .price-includes li::before {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .price-includes li span {
+        color: rgba(242, 237, 227, 0.55);
+        line-height: 1.4;
+      }
+      .opt-b .price-includes li span {
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      .big-quote {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(1.4rem, 3vw, 2.2rem);
+        line-height: 1.5;
+        color: var(--ink);
+        max-width: 700px;
+        margin-bottom: 28px;
+      }
+      .quote-attr {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mid);
+      }
+      .quote-mark {
+        font-family: var(--bebas);
+        font-size: 8rem;
+        line-height: 0.7;
+        color: var(--red);
+        opacity: 0.2;
+        margin-bottom: 8px;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .tl-row {
+        display: flex;
+        align-items: stretch;
+        background: rgba(242, 237, 227, 0.03);
+      }
+      .tl-num {
+        font-family: var(--bebas);
+        font-size: 1.5rem;
+        color: var(--red);
+        padding: 18px 22px;
+        min-width: 68px;
+        text-align: center;
+        border-right: 1px solid rgba(242, 237, 227, 0.06);
+      }
+      .tl-body {
+        padding: 18px 22px;
+      }
+      .tl-title {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--cream);
+        margin-bottom: 3px;
+      }
+      .tl-desc {
+        font-size: 0.75rem;
+        font-weight: 300;
+        color: rgba(242, 237, 227, 0.45);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        width: 100%;
+      }
+      .two-col-wide {
+        grid-template-columns: 1.3fr 1fr;
+      }
+
+      .stats-row {
+        display: flex;
+        gap: 3px;
+        width: 100%;
+        margin-top: 8px;
+      }
+      .stat {
+        flex: 1;
+        padding: 28px 22px;
+        background: rgba(242, 237, 227, 0.04);
+        border-bottom: 3px solid var(--yellow);
+      }
+      .stat-num {
+        font-family: var(--bebas);
+        font-size: 3rem;
+        letter-spacing: 0.02em;
+        color: var(--yellow);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .stat-label {
+        font-size: 0.72rem;
+        font-weight: 300;
+        color: rgba(242, 237, 227, 0.45);
+        line-height: 1.4;
+      }
+
+      #nav {
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(23, 18, 16, 0.88);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(242, 237, 227, 0.1);
+        padding: 12px 20px;
+      }
+      #nav-counter {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        color: rgba(242, 237, 227, 0.35);
+        min-width: 48px;
+        text-align: center;
+      }
+      .nav-btn {
+        width: 32px;
+        height: 32px;
+        background: none;
+        border: 1px solid rgba(242, 237, 227, 0.15);
+        color: rgba(242, 237, 227, 0.5);
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+      .nav-btn:hover {
+        border-color: var(--red);
+        color: var(--cream);
+        background: rgba(204, 42, 40, 0.1);
+      }
+
+      #progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2px;
+        background: var(--red);
+        transition: width 0.4s ease;
+        z-index: 200;
+        width: 10%;
+      }
+
+      .slide-num {
+        position: absolute;
+        top: 28px;
+        right: 36px;
+        font-family: var(--bebas);
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        color: rgba(242, 237, 227, 0.15);
+      }
+      .slide-light .slide-num,
+      .slide-warm .slide-num {
+        color: rgba(242, 237, 227, 0.15);
+      }
+
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 20px;
+      }
+      .pill {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        border: 1.5px solid rgba(242, 237, 227, 0.2);
+        color: rgba(242, 237, 227, 0.5);
+      }
+      .pill.y {
+        border-color: var(--yellow);
+        color: var(--yellow);
+      }
+      .pill.r {
+        border-color: var(--red);
+        color: var(--red);
+      }
+
+      .hint {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="hint">Use arrow keys or buttons to navigate</p>
+
+    <div class="left-panel">
+      <div id="progress"></div>
+      <div class="deck" id="deck">
+        <!-- 01 COVER -->
+        <div class="slide slide-cover active" id="s0">
+      <div class="photo-bg" style="background-image: url('fotos/1.jpg')"></div>
+          <span class="slide-num">01 / 10</span>
+          <img
+            src="logo-header-stg.png"
+            alt="*special mention"
+            class="logo-img" />
+          <span class="kicker">Website Proposal · 2026</span>
+          <h1 class="title">
+            Your brand.<br />
+            Online.<br />
+            <span class="red">Done right.</span>
+          </h1>
+          <p class="subtitle">
+            A professional landing page for *special mention —<br />
+            café, bar and community venue in Arataki - Mount Maunganui.
+          </p>
+          <div class="pills">
+            <span class="pill y">Design</span>
+            <span class="pill y">Development</span>
+            <span class="pill y">Mobile Responsive</span>
+            <span class="pill r">Ready to launch</span>
+          </div>
+        </div>
+
+        <!-- 02 THE PROBLEM -->
+        <div class="slide slide-warm" id="s1">
+      <div class="photo-bg" style="background-image: url('fotos/2.jpg')"></div>
+          <span class="slide-num">02 / 10</span>
+          <span class="kicker">The starting point</span>
+          <h2 class="title">
+            No<br /><span class="red">online</span><br />presence.
+          </h2>
+          <div class="rule"></div>
+          <div class="two-col">
+            <ul class="checklist" style="color: var(--ink)">
+              <li>
+                Instagram exists, but doesn't convert visitors into customers
+              </li>
+              <li>
+                People searching on Google can't find clear information
+              </li>
+              <li>
+                Events like the Latte Art Throwdown get no online visibility
+              </li>
+              <li>
+                Without a website, the business depends on third-party platforms
+              </li>
+              <li>
+                Competitors with websites show up first in local search results
+              </li>
+            </ul>
+            <div
+              style="
+                background: var(--cream);
+                padding: 32px;
+                border-left: 4px solid var(--red);
+              ">
+              <div class="quote-mark" style="color: var(--red)">"</div>
+              <p class="big-quote" style="font-size: 1.1rem; max-width: 100%">
+                "A very quaint but vibrant place. Highly recommended for both
+                locals and visitors."
+              </p>
+              <span class="quote-attr"
+                >Kookie Samin · Google Reviews · 254 reviews</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 THE SOLUTION -->
+        <div class="slide slide-dark" id="s2">
+      <div class="photo-bg" style="background-image: url('fotos/3.jpg')"></div>
+          <span class="slide-num">03 / 10</span>
+          <span class="kicker">What was built</span>
+          <h2 class="title">
+            A landing page<br />that actually<br /><span class="yel"
+              >represents.</span
+            >
+          </h2>
+          <div class="rule"></div>
+          <p class="subtitle" style="max-width: 100%; margin-bottom: 24px">
+            Built from scratch with its own visual identity, real content and
+            fully optimised for mobile.
+          </p>
+          <div class="feat-grid">
+            <div class="feat">
+              <span class="feat-icon">01</span>
+              <div class="feat-title">Video Hero</div>
+              <div class="feat-desc">
+                Full-screen black &amp; white video with the brand tagline
+                overlaid on top
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">02</span>
+              <div class="feat-title">Featured Event</div>
+              <div class="feat-desc">
+                Dedicated section for the Latte Art Throwdown with all event
+                details and partners
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">03</span>
+              <div class="feat-title">About the venue</div>
+              <div class="feat-desc">
+                Story, identity and what makes *special mention unique in
+                Arataki
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">04</span>
+              <div class="feat-title">Food &amp; Coffee</div>
+              <div class="feat-desc">
+                Visual section highlighting the menu — cinnamon buns, Reuben,
+                matcha coconut
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">05</span>
+              <div class="feat-title">Events &amp; Nights</div>
+              <div class="feat-desc">
+                Events grid with real photos and descriptions of local collabs
+                and live nights
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">06</span>
+              <div class="feat-title">Real Google Reviews</div>
+              <div class="feat-desc">
+                6 real 5-star Google reviews — no placeholders, no fake content
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 DESIGN -->
+        <div class="slide slide-light" id="s3">
+      <div class="photo-bg" style="background-image: url('fotos/4.jpg')"></div>
+          <span class="slide-num">04 / 10</span>
+          <span class="kicker">Visual identity</span>
+          <h2 class="title">
+            Design built<br />for the<br /><span class="red">brand.</span>
+          </h2>
+          <div class="rule"></div>
+          <div class="two-col">
+            <ul class="checklist" style="color: var(--ink)">
+              <li>
+                Colour palette taken directly from the brand's Instagram feed
+              </li>
+              <li>
+                Bebas Neue typeface for headings — raw, grunge, direct
+              </li>
+              <li>
+                Film grain overlay across the entire page
+              </li>
+              <li>
+                Real photos of the space — no stock imagery
+              </li>
+              <li>
+                Original *special mention logo in the header
+              </li>
+              <li>
+                Animated ticker strip with brand highlights
+              </li>
+              <li>
+                Smooth scroll animations — subtle, not distracting
+              </li>
+            </ul>
+            <div style="display: flex; flex-direction: column; gap: 3px">
+              <div
+                style="
+                  padding: 20px 22px;
+                  font-family: var(--bebas);
+                  font-size: 1.4rem;
+                  letter-spacing: 0.05em;
+                  background: #cc2a28;
+                  color: #f2ede3;
+                ">
+                Red · #CC2A28
+              </div>
+              <div
+                style="
+                  padding: 20px 22px;
+                  font-family: var(--bebas);
+                  font-size: 1.4rem;
+                  letter-spacing: 0.05em;
+                  background: #e8c030;
+                  color: #171210;
+                ">
+                Yellow · #E8C030
+              </div>
+              <div
+                style="
+                  padding: 20px 22px;
+                  font-family: var(--bebas);
+                  font-size: 1.4rem;
+                  letter-spacing: 0.05em;
+                  background: #171210;
+                  color: #f2ede3;
+                ">
+                Ink · #171210
+              </div>
+              <div
+                style="
+                  padding: 20px 22px;
+                  font-family: var(--bebas);
+                  font-size: 1.4rem;
+                  letter-spacing: 0.05em;
+                  background: #f2ede3;
+                  color: #171210;
+                ">
+                Cream · #F2EDE3
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 RESPONSIVE -->
+        <div class="slide slide-dark" id="s4">
+      <div class="photo-bg" style="background-image: url('fotos/5.jpg')"></div>
+          <span class="slide-num">05 / 10</span>
+          <span class="kicker">Mobile first</span>
+          <h2 class="title">
+            Works on<br /><span class="yel">every</span><br />screen.
+          </h2>
+          <div class="rule"></div>
+          <div class="two-col two-col-wide">
+            <div>
+              <p class="subtitle" style="margin-bottom: 24px">
+                Fully responsive — from phone to widescreen. Tested on iOS
+                Safari, Android Chrome, tablet and desktop.
+              </p>
+              <div class="timeline">
+                <div class="tl-row">
+                  <div class="tl-num">📱</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Mobile (up to 480px)</div>
+                    <div class="tl-desc">
+                      Hero with 100dvh (fixes iOS Safari bug), hamburger menu,
+                      stacked columns, scaled type
+                    </div>
+                  </div>
+                </div>
+                <div class="tl-row">
+                  <div class="tl-num">⬜</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Tablet (up to 768px)</div>
+                    <div class="tl-desc">
+                      Intermediate layout, 2-column grids, adjusted padding
+                    </div>
+                  </div>
+                </div>
+                <div class="tl-row">
+                  <div class="tl-num">🖥️</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Desktop (1024px+)</div>
+                    <div class="tl-desc">
+                      Full layout with all sections, animations and wide grids
+                    </div>
+                  </div>
+                </div>
+                <div class="tl-row">
+                  <div class="tl-num">↔️</div>
+                  <div class="tl-body">
+                    <div class="tl-title">Landscape mobile</div>
+                    <div class="tl-desc">
+                      Compact hero adapted for phones held sideways
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div class="stats-row" style="margin: 0">
+                <div class="stat">
+                  <div class="stat-num">3</div>
+                  <div class="stat-label">Responsive breakpoints</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-num">2</div>
+                  <div class="stat-label">Site versions</div>
+                </div>
+              </div>
+              <div
+                style="
+                  background: rgba(242, 237, 227, 0.04);
+                  border-left: 3px solid var(--yellow);
+                  padding: 20px 22px;
+                ">
+                <div
+                  style="
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: var(--yellow);
+                    margin-bottom: 8px;
+                  ">
+                  Version A
+                </div>
+                <div
+                  style="font-size: 0.85rem; color: rgba(242, 237, 227, 0.6)">
+                  Full-screen black &amp; white video hero
+                </div>
+              </div>
+              <div
+                style="
+                  background: rgba(242, 237, 227, 0.04);
+                  border-left: 3px solid var(--red);
+                  padding: 20px 22px;
+                ">
+                <div
+                  style="
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: var(--red);
+                    margin-bottom: 8px;
+                  ">
+                  Version B
+                </div>
+                <div
+                  style="font-size: 0.85rem; color: rgba(242, 237, 227, 0.6)">
+                  Oil painting hero image + separate video section
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 TECH -->
+        <div class="slide slide-light" id="s5">
+      <div class="photo-bg" style="background-image: url('fotos/6.jpg')"></div>
+          <span class="slide-num">06 / 10</span>
+          <span class="kicker">Technology</span>
+          <h2 class="title">
+            Simple.<br />Fast.<br /><span class="red">No ongoing costs.</span>
+          </h2>
+          <div class="rule"></div>
+          <div class="two-col">
+            <ul class="checklist" style="color: var(--ink)">
+              <li>
+                Pure HTML + CSS + JavaScript — no heavy frameworks
+              </li>
+              <li>
+                Single file — easy to update and maintain
+              </li>
+              <li>
+                Hosted on GitHub Pages — <strong>free hosting</strong>, no
+                monthly fee
+              </li>
+              <li>
+                Google Fonts — professional typography at zero cost
+              </li>
+              <li>
+                No database, no server, no technical maintenance required
+              </li>
+              <li>
+                Fast load time — optimised for local SEO
+              </li>
+            </ul>
+            <div style="display: flex; flex-direction: column; gap: 3px">
+              <div class="feat" style="border-left-color: var(--yellow)">
+                <div class="feat-title">
+                  Monthly hosting cost
+                </div>
+                <div
+                  style="
+                    font-family: var(--bebas);
+                    font-size: 2.5rem;
+                    color: var(--red);
+                    line-height: 1;
+                    margin: 8px 0;
+                  ">
+                  $0
+                </div>
+                <div class="feat-desc" style="color: rgba(242, 237, 227, 0.5)">
+                  GitHub Pages is completely free for public websites
+                </div>
+              </div>
+              <div class="feat" style="border-left-color: var(--red)">
+                <div class="feat-title">
+                  Custom domain (optional)
+                </div>
+                <div
+                  style="
+                    font-family: var(--bebas);
+                    font-size: 2rem;
+                    color: var(--mid);
+                    line-height: 1;
+                    margin: 8px 0;
+                  ">
+                  ~$49 NZD/yr
+                </div>
+                <div class="feat-desc" style="color: rgba(242, 237, 227, 0.5)">
+                  e.g. specialmentionatk.co.nz — easy to set up
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 REVIEWS -->
+        <div class="slide slide-red slide-center" id="s6">
+      <div class="photo-bg" style="background-image: url('fotos/7.jpg')"></div>
+          <span class="slide-num" style="color: rgba(255, 255, 255, 0.2)"
+            >07 / 10</span
+          >
+          <div style="max-width: 800px; margin: 0 auto">
+            <div
+              class="quote-mark"
+              style="color: rgba(255, 255, 255, 0.2); font-size: 10rem">
+              ❝
+            </div>
+            <p
+              class="big-quote"
+              style="
+                color: #fff;
+                font-size: clamp(1.5rem, 3vw, 2.4rem);
+                margin-bottom: 32px;
+              ">
+              "5 stars all round. Staff are lovely,<br />coffee is great, and I
+              really recommend<br />the cinnamon buns. Will keep coming back."
+            </p>
+            <span class="quote-attr" style="color: rgba(255, 255, 255, 0.55)"
+              >Rachel Baker · Google Reviews</span
+            >
+            <div
+              style="
+                margin-top: 40px;
+                display: flex;
+                justify-content: center;
+                gap: 32px;
+              ">
+              <div style="text-align: center">
+                <div
+                  style="
+                    font-family: var(--bebas);
+                    font-size: 3rem;
+                    color: #fff;
+                    line-height: 1;
+                  ">
+                  5.0
+                </div>
+                <div
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.2em;
+                    text-transform: uppercase;
+                    color: rgba(255, 255, 255, 0.5);
+                    margin-top: 6px;
+                  ">
+                  Google Rating
+                </div>
+              </div>
+              <div
+                style="width: 1px; background: rgba(255, 255, 255, 0.15)"></div>
+              <div style="text-align: center">
+                <div
+                  style="
+                    font-family: var(--bebas);
+                    font-size: 3rem;
+                    color: #fff;
+                    line-height: 1;
+                  ">
+                  6
+                </div>
+                <div
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.2em;
+                    text-transform: uppercase;
+                    color: rgba(255, 255, 255, 0.5);
+                    margin-top: 6px;
+                  ">
+                  Reviews on site
+                </div>
+              </div>
+              <div
+                style="width: 1px; background: rgba(255, 255, 255, 0.15)"></div>
+              <div style="text-align: center">
+                <div
+                  style="
+                    font-family: var(--bebas);
+                    font-size: 3rem;
+                    color: #fff;
+                    line-height: 1;
+                  ">
+                  2
+                </div>
+                <div
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.2em;
+                    text-transform: uppercase;
+                    color: rgba(255, 255, 255, 0.5);
+                    margin-top: 6px;
+                  ">
+                  Site versions
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 WHAT'S INCLUDED -->
+        <div class="slide slide-dark" id="s7">
+      <div class="photo-bg" style="background-image: url('fotos/8.jpg')"></div>
+          <span class="slide-num">08 / 10</span>
+          <span class="kicker">Delivery</span>
+          <h2 class="title">What's<br /><span class="yel">included.</span></h2>
+          <div class="rule"></div>
+          <div class="feat-grid feat-grid-2" style="max-width: 900px">
+            <div class="feat">
+              <span class="feat-icon">✓</span>
+              <div class="feat-title">2 complete site versions</div>
+              <div class="feat-desc">
+                Version A (video hero) and Version B (painting hero) — owner
+                chooses which to use
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">✓</span>
+              <div class="feat-title">Full design</div>
+              <div class="feat-desc">
+                Visual identity, colour palette, typography, animations and
+                microinteractions
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">✓</span>
+              <div class="feat-title">Real content</div>
+              <div class="feat-desc">
+                Actual photos of the space, real Google reviews, Latte Art
+                Throwdown event section
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">✓</span>
+              <div class="feat-title">Fully responsive</div>
+              <div class="feat-desc">
+                Mobile, tablet and desktop — tested on iOS and Android
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">✓</span>
+              <div class="feat-title">GitHub Pages deploy</div>
+              <div class="feat-desc">
+                Published online and ready to share with a link — free hosting
+              </div>
+            </div>
+            <div class="feat">
+              <span class="feat-icon">✓</span>
+              <div class="feat-title">Revisions included</div>
+              <div class="feat-desc">
+                Content, colour and section adjustments after delivery
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 INVESTMENT -->
+        <div class="slide slide-light" id="s8">
+      <div class="photo-bg" style="background-image: url('fotos/slide9.jpg')"></div>
+          <span class="slide-num">09 / 10</span>
+          <span class="kicker">Investment</span>
+          <h2 class="title">Choose your<br /><span class="red">plan.</span></h2>
+          <div class="rule"></div>
+          <p
+            class="subtitle"
+            style="color: rgba(23, 18, 16, 0.55); margin-bottom: 8px">
+            Two options. Both include the full site, both versions, real content
+            and a live URL.
+          </p>
+          <div class="price-row">
+            <div class="price-box opt-a">
+              <div class="price-tag">One-time</div>
+              <div class="price-label">Full site, delivered</div>
+              <div style="display: flex; align-items: baseline; gap: 4px">
+                <div class="price-amount" style="color: var(--yellow)">$600</div>
+              </div>
+              <div class="price-note" style="color: rgba(242, 237, 227, 0.5)">
+                Single payment. No ongoing commitment.
+              </div>
+              <ul class="price-includes">
+                <li>
+                  <span>2 site versions, fully designed &amp; built</span>
+                </li>
+                <li><span>All real photos, reviews and event content</span></li>
+                <li><span>Responsive across all devices</span></li>
+                <li><span>Deployed live on GitHub Pages</span></li>
+                <li><span>Files handed over — you own everything</span></li>
+                <li>
+                  <span style="color: rgba(23, 18, 16, 0.35)"
+                    >No maintenance from my side after delivery</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="price-box opt-b">
+              <div class="price-tag">Monthly plan</div>
+              <div class="price-label">Site + ongoing support</div>
+              <div style="display: flex; align-items: baseline; gap: 4px">
+                <div class="price-amount">$500</div>
+                <div class="price-per">upfront</div>
+              </div>
+              <div
+                style="
+                  margin-top: 6px;
+                  display: flex;
+                  align-items: baseline;
+                  gap: 4px;
+                ">
+                <div
+                  style="
+                    font-family: var(--bebas);
+                    font-size: 2rem;
+                    color: rgba(255, 255, 255, 0.9);
+                  ">
+                  + $50
+                </div>
+                <div
+                  style="
+                    font-family: var(--bebas);
+                    font-size: 1rem;
+                    color: rgba(255, 255, 255, 0.5);
+                  ">
+                  /month
+                </div>
+              </div>
+              <div class="price-note">
+                Everything in the one-time plan, plus ongoing support.
+              </div>
+              <ul class="price-includes">
+                <li><span>Everything in the one-time plan</span></li>
+                <li>
+                  <span>Monthly content updates (events, photos, text)</span>
+                </li>
+                <li><span>Priority fixes and adjustments</span></li>
+                <li><span>Site monitored and kept running</span></li>
+                <li><span>Cancel anytime — no lock-in</span></li>
+              </ul>
+            </div>
+
+            <div
+              class="price-box"
+              style="
+                border-top-color: rgba(242, 237, 227, 0.1);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              ">
+              <div
+                style="
+                  font-size: 0.6rem;
+                  font-weight: 700;
+                  letter-spacing: 0.24em;
+                  text-transform: uppercase;
+                  color: rgba(242, 237, 227, 0.3);
+                  margin-bottom: 16px;
+                ">
+                vs. an agency
+              </div>
+              <div
+                style="
+                  font-family: var(--bebas);
+                  font-size: 2.5rem;
+                  color: rgba(242, 237, 227, 0.15);
+                  line-height: 1;
+                  margin-bottom: 6px;
+                ">
+                $2,000–
+              </div>
+              <div
+                style="
+                  font-family: var(--bebas);
+                  font-size: 2.5rem;
+                  color: rgba(242, 237, 227, 0.15);
+                  line-height: 1;
+                  margin-bottom: 16px;
+                ">
+                $8,000
+              </div>
+              <div
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 300;
+                  color: rgba(242, 237, 227, 0.3);
+                  line-height: 1.7;
+                ">
+                Typical agency cost for a comparable site, plus $50–$150/month
+                in ongoing fees.<br /><br />Same result. A fraction of the cost.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 NEXT STEPS -->
+        <div class="slide slide-cover" id="s9">
+      <div class="photo-bg" style="background-image: url('fotos/10.jpg')"></div>
+          <span class="slide-num">10 / 10</span>
+          <img
+            src="logo-header-stg.png"
+            alt="*special mention"
+            class="logo-img" />
+          <span class="kicker">Next steps</span>
+          <h2 class="title">
+            Ready<br />to<br /><span class="yel">launch.</span>
+          </h2>
+          <div class="rule"></div>
+          <div class="timeline" style="max-width: 600px">
+            <div class="tl-row">
+              <div class="tl-num">01</div>
+              <div class="tl-body">
+                <div class="tl-title">Choose a version</div>
+                <div class="tl-desc">
+                  Version A (video) or Version B (painting) — or combine
+                  elements from both
+                </div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-num">02</div>
+              <div class="tl-body">
+                <div class="tl-title">Choose a plan</div>
+                <div class="tl-desc">
+                  One-time $600 or $500 upfront + $50/month with ongoing support
+                </div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-num">03</div>
+              <div class="tl-body">
+                <div class="tl-title">Final revisions</div>
+                <div class="tl-desc">
+                  Any text, photo or section changes based on feedback
+                </div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-num">04</div>
+              <div class="tl-body">
+                <div class="tl-title">Go live</div>
+                <div class="tl-desc">
+                  Site published, custom domain set up if needed, files handed
+                  over
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /deck -->
+
+      <div id="nav">
+        <button class="nav-btn" id="prev">←</button>
+        <span id="nav-counter">1 / 10</span>
+        <button class="nav-btn" id="next">→</button>
+      </div>
+    </div>
+    <!-- /left-panel -->
+
+    <div class="right-panel">
+      <img src="hero-painting.jpg" alt="*special mention" />
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      const total = slides.length;
+      let cur = 0;
+
+      function go(n) {
+        slides[cur].classList.remove("active");
+        slides[cur].classList.add("out");
+        setTimeout(() => slides[cur].classList.remove("out"), 500);
+        cur = (n + total) % total;
+        slides[cur].classList.add("active");
+        document.getElementById("nav-counter").textContent =
+          cur + 1 + " / " + total;
+        document.getElementById("progress").style.width =
+          ((cur + 1) / total) * 100 + "%";
+      }
+
+      document
+        .getElementById("next")
+        .addEventListener("click", () => go(cur + 1));
+      document
+        .getElementById("prev")
+        .addEventListener("click", () => go(cur - 1));
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
+          e.preventDefault();
+          go(cur + 1);
+        }
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          go(cur - 1);
+        }
+      });
+
+      document.getElementById("progress").style.width = (1 / total) * 100 + "%";
+    </script>
+  </body>
+</html>
