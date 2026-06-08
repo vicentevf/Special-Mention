@@ -67,11 +67,28 @@
         height: 100%;
         position: relative;
         overflow: hidden;
-        border-left: 4px solid var(--yellow);
+        border-left: none;
         background: var(--ink);
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+      .right-panel::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0; bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(232, 192, 48, 0.0) 5%,
+          rgba(232, 192, 48, 0.9) 30%,
+          rgba(204, 42, 40, 0.7) 60%,
+          rgba(204, 42, 40, 0.0) 90%,
+          transparent 100%
+        );
+        z-index: 10;
       }
 
       /* ── BRAND PANEL ── */
